@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+        <head>
+                <title>GisCovid</title>
+                <style>html, body, #map {width:100%;height: 100%; margin: 0; padding: 0;}</style>
+                <link type="text/css" rel="stylesheet" href="https://cdn.rawgit.com/markkr125/jsmaps/v0.0.15/library/native/core.native.css" />
+                <script src="https://cdn.rawgit.com/markkr125/jsmaps/v0.0.15/library/core.abstract.js" type="text/javascript">
+                </script>
+                <script src="https://cdn.rawgit.com/markkr125/jsmaps/v0.0.15/library/core.abstract-helper.js" type="text/javascript">
+                </script>
+                <script src="https://cdn.rawgit.com/markkr125/jsmaps/v0.0.15/library/core.js" type="text/javascript">
+                </script>
+                <script src="https://cdn.rawgit.com/markkr125/jsmaps/v0.0.15/library/native/core.native.js" type="text/javascript">
+                </script>
+                <script src="https://cdn.rawgit.com/markkr125/jsmaps/v0.0.15/library/native/core.native-ui.js" type="text/javascript">
+                </script>
+                <script src="https://cdn.rawgit.com/markkr125/jsmaps/v0.0.15/library/native/core.native-helper.js" type="text/javascript">
+                </script>
+                <script src="https://cdn.rawgit.com/markkr125/jsmaps/v0.0.15/library/native/core.native-marker.js" type="text/javascript">
+                </script>
+                <script src="https://cdn.rawgit.com/markkr125/jsmaps/v0.0.15/library/native/core.native-infoWindow.js" type="text/javascript">
+                </script>
+                <script src="https://cdn.rawgit.com/markkr125/jsmaps/v0.0.15/library/native/core.native-vector.js" type="text/javascript">
+                </script>
+                <style>
+                        p {
+                                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+                                font-size: 15px;
+                        }
+                        .firstHeading {
+                                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+                                font-size: 20px;
+                        }
+                        .alta {
+                                color: red;
+                        }
+                        .baixo {
+                                color: green;
+                        }
+                </style>
+        </head>
+        <body>
+                <script type='text/javascript'>
+                        jsMaps.loader(function (){
+                                var tiles = new jsMaps.Native.Tiles();
+                        tiles.addTileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png",['a','b','c'],'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>.','OpenStreetMap');
+                        tiles.addTileLayer("http://{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png",['otile1','otile2','otile3','otile4'],'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>. Tiles courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="https://developer.mapquest.com/content/osm/mq_logo.png">','Map Quest');
+                        tiles.addTileLayer("http://{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg",['oatile1','oatile2','oatile3','oatile4'],'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>. Tiles courtesy of <a href="http://www.mapquest.com/" target="_blank">MapQuest</a> <img src="https://developer.mapquest.com/content/osm/mq_logo.png">','Map Quest Satellite',19);
+
+                        var map = jsMaps.api.init(
+                                '#map',
+                                'native',
+                                {
+                                center: {
+                                                        
+                                        latitude: -12.2789093,
+                                        longitude:-45.4324212
+                                },
+                                zoom: 5,
+                                mouse_scroll: true,
+                                zoom_control: true,
+                                map_type: true, 
+                                },tiles
+                        );
+
+                        var marker = jsMaps.api.marker(map,{position: {lat: -9.801576018013998,lng: -68.07331470133}, title: 'Acre No 1',draggable: true});
+                        var marker1 = jsMaps.api.marker(map,{position: {lat:-9.881177701225038,lng: -35.769966490848205}, title: 'Alagoas No 2',draggable: true});
+                        var marker2 = jsMaps.api.marker(map,{position: {lat:1.4731198895148392,lng: -51.875922626387805}, title: 'Amapá No 3',draggable: true});
+                        var marker3 = jsMaps.api.marker(map,{position: {lat:-2.810258348009098,lng: -60.02777740612982}, title: 'Amazonas No 4',draggable: true});
+                        var marker4 = jsMaps.api.marker(map,{position: {lat:-12.910185082018547,lng: -38.47016508804983}, title: 'Bahia No 5',draggable: true});
+                        var marker5 = jsMaps.api.marker(map,{position: {lat:-4.7395649722930004,lng: -39.24164595154974}, title: 'Ceará No 6',draggable: true});
+                        var marker6 = jsMaps.api.marker(map,{position: {lat:-15.367875442610805,lng: -47.50336390344884}, title: 'Distrito Federal No 7',draggable: true});
+                        var marker7 = jsMaps.api.marker(map,{position: {lat:-19.213347239450734,lng: -40.22922325392508}, title: 'Espírito Santo No 8',draggable: true});
+                        var marker8 = jsMaps.api.marker(map,{position: {lat:-16.473705288040026,lng: -49.523656837627016}, title: 'Goiás No 9',draggable: true});
+                        var marker9 = jsMaps.api.marker(map,{position: {lat:-4.923653552676963,lng: -45.46880168484846}, title: 'Maranhão No 10',draggable: true});
+                        var marker10 = jsMaps.api.marker(map,{position: {lat:-12.720872937133782,lng: -56.55446495007524}, title: 'Mato Grosso No 11',draggable: true});
+                        var marker11 = jsMaps.api.marker(map,{position: {lat:-21.125073184953482,lng: -55.03183762609008}, title: 'Mato Grosso do Sul No 12',draggable: true});
+                        var marker12 = jsMaps.api.marker(map,{position: {lat:-17.489359150806436,lng: -44.93277903305671}, title: 'Minas Gerais No 13',draggable: true});
+                        var marker13 = jsMaps.api.marker(map,{position: {lat:-5.546682066944234,lng: -52.359471297431014}, title: 'Pará No 14',draggable: true});
+                        var marker14 = jsMaps.api.marker(map,{position: {lat:-7.090896720469295,lng: -37.19534630331048}, title: 'Paraíba No 15',draggable: true});
+                        var marker15 = jsMaps.api.marker(map,{position: {lat:-24.7607192825349,lng: -52.15373465457558}, title: 'Paraná No 16',draggable: true});
+                        var marker16 = jsMaps.api.marker(map,{position: {lat:-8.313603109097391,lng: -35.366625761881174}, title: 'Pernambuco No 17',draggable: true});
+                        var marker17 = jsMaps.api.marker(map,{position: {lat:-7.5301425639489885,lng: -42.70549246994643}, title: 'Piauí No 18',draggable: true});
+                        var marker18 = jsMaps.api.marker(map,{position: {lat:-22.01499028379755,lng: -42.07525467771997}, title: 'Rio de Janeiro No 19',draggable: true});
+                        var marker19 = jsMaps.api.marker(map,{position: {lat:-5.089879546729939,lng: -37.0844175435628}, title: 'Rio Grande do Norte No 20',draggable: true});
+                        var marker20 = jsMaps.api.marker(map,{position: {lat:-28.80907602083688,lng: -52.75535900124817}, title: 'Rio Grande do Sul No 21',draggable: true});
+                        var marker21 = jsMaps.api.marker(map,{position: {lat:-11.042767906943437,lng: -62.91755907617827}, title: 'Rondônia No 22',draggable: true});
+                        var marker22 = jsMaps.api.marker(map,{position: {lat:1.6000052715604371,lng: -61.32856058280111}, title: 'Roraima No 23',draggable: true});
+                        var marker23 = jsMaps.api.marker(map,{position: {lat:-27.382016062809665,lng: -50.718101952017705}, title: 'Santa Catarina No 24',draggable: true});
+                        var marker24 = jsMaps.api.marker(map,{position: {lat:-22.136155998932086,lng: -49.04010452425216}, title: 'São Paulo No 25',draggable: true});
+                        var marker25 = jsMaps.api.marker(map,{position: {lat:-11.074217421834366,lng: -37.20152525967433}, title: 'Sergipe No 26',draggable: true});
+                        var marker26 = jsMaps.api.marker(map,{position: {lat:-10.725464783488308,lng: -48.172812501566185}, title: 'Tocantins No 27',draggable: true});
+                        
+                        var contentString = '<div id="content">'+
+                                '<div id="siteNotice">'+
+                                '</div>'+
+                                '<h1 id="firstHeading" class="firstHeading">Números ACRE</h1>'+
+                                '<div id="bodyContent">'+
+                                '<p class="baixo">Nª Infectados 79.510   Mortes 1.599 </p>'+
+                                '</div>'+
+                                '</div>';
+                        
+                        var contentString1 = '<div id="content">'+
+                                '<div id="siteNotice">'+
+                                '</div>'+
+                                '<h1 id="firstHeading" class="firstHeading">Números ALAGOAS</h1>'+
+                                '<div id="bodyContent">'+
+                                '<p class="baixo">Nª Infectados  180.975 Mortes  4.413 </p>'+
+                                '</div>'+
+                                '</div>';
+
+                        var contentString2 = '<div id="content">'+
+                                '<div id="siteNotice">'+
+                                '</div>'+
+                                '<h1 id="firstHeading" class="firstHeading">Números AMAPÁ</h1>'+
+                                '<div id="bodyContent">'+
+                                '<p class="baixo">Nª Infectados  108.094 Mortes  1.595 </p>'+
+                                '</div>'+
+                                '</div>';
+
+                        var contentString3 = '<div id="content">'+
+                                '<div id="siteNotice">'+
+                                '</div>'+
+                                '<h1 id="firstHeading" class="firstHeading">Números AMAZONAS</h1>'+
+                                '<div id="bodyContent">'+
+                                '<p>Nª Infectados  376.298 Mortes  12.758  </p>'+
+                                '</div>'+
+                                '</div>';
+
+                        var contentString4 = '<div id="content">'+
+                                '<div id="siteNotice">'+           
+                                '</div>'+
+                                '<h1 id="firstHeading" class="firstHeading">Números BAHIA</h1>'+
+                                '<div id="bodyContent">'+
+                                '<p>Nª Infectados  862.334 Mortes  17.303  </p>'+
+                                '</div>'+
+                                '</div>';
+
+                        var contentString5 = '<div id="content">'+
+                                '<div id="siteNotice">'+
+                                '</div>'+
+                                '<h1 id="firstHeading" class="firstHeading">Números CEARÁ</h1>'+
+                                '<div id="bodyContent">'+
+                                '<p>Nª Infectados  722.420 Mortes  18.598  </p>'+
+                                '</div>'+
+                                '</div>';
+
+                        var contentString6 = '<div id="content">'+
+                                '<div id="siteNotice">'+
+                                '</div>'+
+                                '<h1 id="firstHeading" class="firstHeading">Números DISTRITO FEDERAL</h1>'+
+                                '<div id="bodyContent">'+
+                                '<p>Nª Infectados  388.286 Mortes  8.184 </p>'+
+                                '</div>'+
+                                '</div>';
+                                
+                        var contentString7 = '<div id="content">'+
+                                '<div id="siteNotice">'+
+                                '</div>'+
+                                '<h1 id="firstHeading" class="firstHeading">Números ESPIRITO SANTO</h1>'+
+                                '<div id="bodyContent">'+
+                                '<p>Nª Infectados  451.485  Mortes  10.013 </p>'+
+                                '</div>'+
+                                '</div>';
+
+                        var contentString8 = '<div id="content">'+
+                                '<div id="siteNotice">'+
+                                '</div>'+
+                                '<h1 id="firstHeading" class="firstHeading">Números GOIAS</h1>'+
+                                '<div id="bodyContent">'+
+                                '<p>Nª Infectados  571.378  Mortes 15.756 </p>'+
+                                '</div>'+
+                                '</div>';
+
+                        var contentString9 = '<div id="content">'+
+                                '<div id="siteNotice">'+
+                                '</div>'+
+                                '<h1 id="firstHeading" class="firstHeading">Números MARANHÃO</h1>'+
+                                '<div id="bodyContent">'+
+                                '<p>Nª Infectados 274.799  Mortes 7.583  </p>'+
+                                '</div>'+
+                                '</div>';
+
+                        var contentString10 = '<div id="content">'+
+                                '<div id="siteNotice">'+
+                                '</div>'+
+                                '<h1 id="firstHeading" class="firstHeading">Números MATO GROSSO</h1>'+
+                                '<div id="bodyContent">'+
+                                '<p>Nª Infectados  376.305  Mortes  10.249 </p>'+
+                                '</div>'+
+                                '</div>';
+
+                        var contentString11 = '<div id="content">'+
+                                '<div id="siteNotice">'+
+                                '</div>'+
+                                '<h1 id="firstHeading" class="firstHeading">Números MATO GROSSO DO SUL</h1>'+
+                                '<div id="bodyContent">'+
+                                '<p>Nª Infectados  376.305  Mortes  10.249 </p>'+
+                                '</div>'+
+                                '</div>';
+
+                        var contentString12 = '<div id="content">'+
+                                '<div id="siteNotice">'+
+                                '</div>'+
+                                '<h1 id="firstHeading" class="firstHeading">Números MINAS GERAIS</h1>'+
+                                '<div id="bodyContent">'+
+                                '<p class="alta">Nª Infectados  1.423.717  Mortes  36.122 </p>'+
+                                '</div>'+
+                                '</div>';
+
+                        var contentString13 = '<div id="content">'+
+                                '<div id="siteNotice">'+
+                                '</div>'+
+                                '<h1 id="firstHeading" class="firstHeading">Números PARÁ</h1>'+
+                                '<div id="bodyContent">'+
+                                '<p>Nª Infectados 488.968  Mortes 13.675 </p>'+
+                                '</div>'+
+                                '</div>';
+
+                        var contentString14 = '<div id="content">'+
+                                '<div id="siteNotice">'+
+                                '</div>'+
+                                '<h1 id="firstHeading" class="firstHeading">Número PARAÍBA </h1>'+
+                                '<div id="bodyContent">'+
+                                '<p>Nª Infectados 303.633  Mortes 7.087 </p>'+
+                                '</div>'+
+                                '</div>';
+
+                        var contentString15 = '<div id="content">'+
+                                '<div id="siteNotice">'+
+                                '</div>'+
+                                '<h1 id="firstHeading" class="firstHeading">Número PARANÁ </h1>'+
+                                '<div id="bodyContent">'+
+                                '<p class="alta">Nª Infectados	986.849  Mortes	 23.848 </p>'+
+                                '</div>'+
+                                '</div>';
+
+                        var contentString16 = '<div id="content">'+
+                                '<div id="siteNotice">'+
+                                '</div>'+
+                                '<h1 id="firstHeading" class="firstHeading">Número PERNAMBUCO </h1>'+
+                                '<div id="bodyContent">'+
+                                '<p>Nª Infectados 429.189  Mortes 14.639 </p>'+
+                                '</div>'+
+                                '</div>';
+
+                        var contentString17 = '<div id="content">'+
+                                '<div id="siteNotice">'+
+                                '</div>'+
+                                '<h1 id="firstHeading" class="firstHeading">Número PIAUÍ </h1>'+
+                                '<div id="bodyContent">'+
+                                '<p>Nª Infectados 253.188  Mortes 5.423  </p>'+
+                                '</div>'+
+                                '</div>';
+
+                        var contentString18 = '<div id="content">'+
+                                '<div id="siteNotice">'+
+                                '</div>'+
+                                '<h1 id="firstHeading" class="firstHeading">Número RIO DE JANEIRO</h1>'+
+                                '<div id="bodyContent">'+
+                                '<p class="alta">Nª Infectados	792.073  Mortes	 46.770 </p>'+
+                                '</div>'+
+                                '</div>';
+
+                        var contentString19 = '<div id="content">'+
+                                '<div id="siteNotice">'+
+                                '</div>'+
+                                '<h1 id="firstHeading" class="firstHeading">RIO GRANDE DO NORTE</h1>'+
+                                '<div id="bodyContent">'+
+                                '<p>Nª Infectados 235.453  Mortes 5.701 </p>'+
+                                '</div>'+
+                                '</div>';
+
+                        var contentString20 = '<div id="content">'+
+                                '<div id="siteNotice">'+
+                                '</div>'+
+                                '<h1 id="firstHeading" class="firstHeading">Número RIO GRANDE DO SUL</h1>'+
+                                '<div id="bodyContent">'+
+                                '<p class="alta">Nª Infectados	1.013.486 Mortes 26.176</p>'+
+                                '</div>'+
+                                '</div>';
+
+                        var contentString21 = '<div id="content">'+
+                                '<div id="siteNotice">'+
+                                '</div>'+
+                                '<h1 id="firstHeading" class="firstHeading">Número RONDÔNIA</h1>'+
+                                '<div id="bodyContent">'+
+                                '<p>Nª Infectados 218.956  Mortes 5.389 </p>'+
+                                '</div>'+
+                                '</div>';
+
+                        var contentString22 = '<div id="content">'+
+                                '<div id="siteNotice">'+
+                                '</div>'+
+                                '<h1 id="firstHeading" class="firstHeading">Número RORAIMA</h1>'+
+                                '<div id="bodyContent">'+
+                                '<p>Nª Infectados 98.875 Mortes 1.559  </p>'+
+                                '</div>'+
+                                '</div>';
+
+                        var contentString23 = '<div id="content">'+
+                                '<div id="siteNotice">'+
+                                '</div>'+
+                                '<h1 id="firstHeading" class="firstHeading">Número SANTA CATARINA</h1>'+
+                                '<div id="bodyContent">'+
+                                '<p>Nª Infectados 914.946  Mortes 14.185 </p>'+
+                                '</div>'+
+                                '</div>';
+
+                        var contentString24 = '<div id="content">'+
+                                '<div id="siteNotice">'+
+                                '</div>'+
+                                '<h1 id="firstHeading" class="firstHeading">Número SÃO PAULO</h1>'+
+                                '<div id="bodyContent">'+
+                                '<p class="alta">Nª Infectados	3.022.568  Mortes 101.660</p>'+
+                                '</div>'+
+                                '</div>';
+
+                        var contentString25 = '<div id="content">'+
+                                '<div id="siteNotice">'+
+                                '</div>'+
+                                '<h1 id="firstHeading" class="firstHeading">Número SERGIPE</h1>'+
+                                '<div id="bodyContent">'+
+                                '<p class="baixo">Nª Infectados 213.061 Mortes 4.583 </p>'+
+                                '</div>'+
+                                '</div>';
+
+                        var contentString26 = '<div id="content">'+
+                                '<div id="siteNotice">'+
+                                '</div>'+
+                                '<h1 id="firstHeading" class="firstHeading">Número TOCANTINS</h1>'+
+                                '<div id="bodyContent">'+
+                                '<p class="baixo">Nª Infectados 165.599 Mortes 2.666 </p>'+
+                                '</div>'+
+                                '</div>';
+
+                
+                        var infoWindow = jsMaps.api.infoWindow({content: contentString});
+                        var infoWindow1 = jsMaps.api.infoWindow({content: contentString1});
+                        var infoWindow2 = jsMaps.api.infoWindow({content: contentString2});
+                        var infoWindow3 = jsMaps.api.infoWindow({content: contentString3});
+                        var infoWindow4 = jsMaps.api.infoWindow({content: contentString4});
+                        var infoWindow5 = jsMaps.api.infoWindow({content: contentString5});
+                        var infoWindow6 = jsMaps.api.infoWindow({content: contentString6});
+                        var infoWindow7 = jsMaps.api.infoWindow({content: contentString7});
+                        var infoWindow8 = jsMaps.api.infoWindow({content: contentString8});
+                        var infoWindow9 = jsMaps.api.infoWindow({content: contentString9});
+                        var infoWindow10 = jsMaps.api.infoWindow({content: contentString10});
+                        var infoWindow11 = jsMaps.api.infoWindow({content: contentString11});
+                        var infoWindow12 = jsMaps.api.infoWindow({content: contentString12});
+                        var infoWindow13 = jsMaps.api.infoWindow({content: contentString13});
+                        var infoWindow14 = jsMaps.api.infoWindow({content: contentString14});
+                        var infoWindow15 = jsMaps.api.infoWindow({content: contentString15});
+                        var infoWindow16 = jsMaps.api.infoWindow({content: contentString16});
+                        var infoWindow17 = jsMaps.api.infoWindow({content: contentString17});
+                        var infoWindow18 = jsMaps.api.infoWindow({content: contentString18});
+                        var infoWindow19 = jsMaps.api.infoWindow({content: contentString19});
+                        var infoWindow20 = jsMaps.api.infoWindow({content: contentString20});
+                        var infoWindow21 = jsMaps.api.infoWindow({content: contentString21});
+                        var infoWindow22 = jsMaps.api.infoWindow({content: contentString22});
+                        var infoWindow23 = jsMaps.api.infoWindow({content: contentString23});
+                        var infoWindow24 = jsMaps.api.infoWindow({content: contentString24});
+                        var infoWindow25 = jsMaps.api.infoWindow({content: contentString25});
+                        var infoWindow26 = jsMaps.api.infoWindow({content: contentString26});
+         
+
+                        jsMaps.api.attach_event(marker,'mouseover',function() {
+                                infoWindow.open(map,marker);
+                        });
+
+                        jsMaps.api.attach_event(marker1,'mouseout',function() {
+                                infoWindow1.open(map,marker1);
+                        });
+
+                        jsMaps.api.attach_event(marker2,'mouseover',function() {
+                                infoWindow2.open(map,marker2);
+                        });
+
+                        jsMaps.api.attach_event(marker3,'mouseout',function() {
+                                infoWindow3.open(map,marker3);
+                        });
+
+                        jsMaps.api.attach_event(marker4,'mouseover',function() {
+                                infoWindow4.open(map,marker4);
+                        });
+
+                        jsMaps.api.attach_event(marker5,'mouseout',function() {
+                                infoWindow5.open(map,marker5);
+                        });
+
+                        jsMaps.api.attach_event(marker6,'mouseover',function() {
+                                infoWindow6.open(map,marker6);
+                        });
+
+                        jsMaps.api.attach_event(marker7,'mouseout',function() {
+                                infoWindow7.open(map,marker7);
+                        });
+
+                        jsMaps.api.attach_event(marker8,'mouseover',function() {
+                                infoWindow8.open(map,marker8);       
+                        });
+
+                        jsMaps.api.attach_event(marker9,'mouseout',function() {
+                                infoWindow9.open(map,marker9);
+                        });
+
+                        jsMaps.api.attach_event(marker10,'mouseout',function() {
+                                infoWindow10.open(map,marker10);
+                        });
+
+                        jsMaps.api.attach_event(marker11,'mouseover',function() {
+                                infoWindow11.open(map,marker11);
+                        });
+
+                        jsMaps.api.attach_event(marker12,'mouseout',function() {
+                                infoWindow12.open(map,marker12);
+                        });
+
+                        jsMaps.api.attach_event(marker13,'mouseover',function() {
+                                infoWindow13.open(map,marker13);
+                        });
+
+                        jsMaps.api.attach_event(marker14,'mouseout',function() {
+                                infoWindow14.open(map,marker14);
+                        });
+
+                        jsMaps.api.attach_event(marker15,'mouseover',function() {
+                                infoWindow15.open(map,marker15);
+                        });
+
+                        jsMaps.api.attach_event(marker16,'mouseout',function() {
+                                infoWindow16.open(map,marker16);
+                        });
+
+                        jsMaps.api.attach_event(marker17,'mouseout',function() {
+                                infoWindow17.open(map,marker17);
+                        });
+
+                        jsMaps.api.attach_event(marker18,'mouseover',function() {
+                                infoWindow18.open(map,marker18);
+                        });
+
+                        jsMaps.api.attach_event(marker19,'mouseout',function() {
+                                infoWindow19.open(map,marker19);
+                        });
+
+                        jsMaps.api.attach_event(marker20,'mouseover',function() {
+                                infoWindow20.open(map,marker20);
+                        });
+
+                        jsMaps.api.attach_event(marker21,'mouseout',function() {
+                                infoWindow21.open(map,marker21);
+                        });
+
+                        jsMaps.api.attach_event(marker22,'mouseover',function() {
+                                infoWindow22.open(map,marker22);
+                        });
+
+                        jsMaps.api.attach_event(marker23,'mouseout',function() {
+                                infoWindow23.open(map,marker23);
+                        });
+
+                        jsMaps.api.attach_event(marker24,'mouseover',function() {
+                        infoWindow24.open(map,marker24);
+                        });
+
+                        jsMaps.api.attach_event(marker25,'mouseout',function() {
+                                infoWindow25.open(map,marker25);
+                        });
+
+                        jsMaps.api.attach_event(marker26,'mouseout',function() {
+                        infoWindow26.open(map,marker26);
+                        
+                        });
+                });
+
+                </script>
+                <div id='map'>
+                </div>
+        </body>
+</html>
